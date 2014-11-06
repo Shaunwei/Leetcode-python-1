@@ -10,7 +10,7 @@ the longest path from the root node down to the
 farthest leaf node.
 """
 import sys
-sys.path.append("C:/code_temp/py_temp/Leetcode/Tree")
+sys.path.append("C:/code_temp/Leetcode-python/Tree")
 import TreeUtil
 
 # Definition for a  binary tree node

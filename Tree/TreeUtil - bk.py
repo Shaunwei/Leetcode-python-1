@@ -61,37 +61,3 @@ def print_tree_pos(node):
         print_tree_pos(node.left)      
         print_tree_pos(node.right)
         print node.val, 
-
-def print_tree_level(node):  
-    if not node: return
-    q = [node]
-    while q:
-        node = q.pop(0)
-        print node.val,
-        if node.left: q.append(node.left)
-        if node.right: q.append(node.right)
-
-def print_tree(node, order):
-    if node:
-        if order == 'pre-order': print node.val,
-        print_tree(node.left, order)
-        if order == 'in-order': print node.val,
-        print_tree(node.right, order)
-        if order == 'post-order': print node.val,
-
-"""
-Pre-order:
-Visit the root.
-Traverse the left subtree.
-Traverse the right subtree.
-
-In-order (symmetric):
-Traverse the left subtree.
-Visit the root.
-Traverse the right subtree.
-
-Post-order:
-Traverse the left subtree.
-Traverse the right subtree.
-Visit the root.
-"""

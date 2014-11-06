@@ -9,7 +9,7 @@ The minimum depth is the number of nodes along the shortest path
 from the root node down to the nearest leaf node.
 """
 import sys
-sys.path.append("C:/code_temp/py_temp/Leetcode/Tree")
+sys.path.append("C:/code_temp/Leetcode-python/Tree")
 import TreeUtil
 
 # Definition for a  binary tree node
