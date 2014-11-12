@@ -5,6 +5,28 @@ class TreeNode:
         self.left = None
         self.right = None
 
+def buildLeetTree(arr):
+    if len(arr)==0 or arr[0]=='#': return None
+    alen, nodes, nidx = len(arr), [], 0
+    for i in arr:
+        if i == '#': nodes.append(None)
+        else: nodes.append(TreeNode(i))
+    for index in range(alen/2):
+        if 2*index+1 < alen:
+            if not nodes[index]:
+                nidx = index
+                while not nodes[nidx] and nidx<alen:
+                    nidx += 1
+                nodes[nidx].left = nodes[2*index+1]
+            elif nidx > 0: nodes[nidx].left = nodes[2*index+1]
+            else: nodes[index].left = nodes[2*index+1]
+        if 2*index+2 < alen:
+            if nidx > 0:
+                nodes[nidx].right = nodes[2*index+2]
+                nidx += 1
+            else: nodes[index].right = nodes[2*index+2]
+    return nodes[0]
+
 def buildTree(arr):
     if len(arr) == 0: return None
     nodes = []
@@ -35,8 +57,6 @@ def orderInsert(root, data):
         else:
             root.right = orderInsert(root.right, data)
         return root
-
-    return root
 
 def print_tree_in(node):
     if node == None:
@@ -78,6 +98,57 @@ def print_tree(node, order):
         if order == 'in-order': print node.val,
         print_tree(node.right, order)
         if order == 'post-order': print node.val,
+
+def print_tree_graph(node):
+    maxLvl = maxLevel(node)
+    printNodeInternal([node], 1, maxLvl)
+
+def printNodeInternal(nodes, level, maxLevel):
+    if not nodes or isAllNull(nodes): return
+    floor = maxLevel - level
+    endgeLines = 2 ** max(floor-1, 0)
+    firstSpaces = 2 ** floor - 1
+    betweenSpaces = 2 ** (floor+1) - 1
+    printWhitespaces(firstSpaces)
+    newNodes = []
+    for node in nodes:
+        if node:
+            print node.val,
+            newNodes.append(node.left)
+            newNodes.append(node.right)
+        else:
+            newNodes.append(None)
+            newNodes.append(None)
+            print ' ',
+        printWhitespaces(betweenSpaces)
+    print
+    for i in xrange(1,endgeLines+1):
+        for j in xrange(len(nodes)):
+            printWhitespaces(firstSpaces-i)
+            if not nodes[j]:
+                printWhitespaces(endgeLines+endgeLines+i+1)
+                continue
+            if nodes[j].left: print '/',
+            else: printWhitespaces(1)
+            printWhitespaces(i+i-1)
+            if nodes[j].right: print '\\',
+            else: printWhitespaces(1)
+            printWhitespaces(endgeLines+endgeLines-i)
+        print
+    printNodeInternal(newNodes, level+1, maxLevel)
+
+def printWhitespaces(count):
+    for i in xrange(count):
+        print ' ',
+
+def maxLevel(node):
+    if not node: return 0
+    return max(maxLevel(node.left), maxLevel(node.right)) + 1
+
+def isAllNull(alist):
+    for elment in alist:
+        if elment: return False
+    return True
 
 """
 Pre-order:

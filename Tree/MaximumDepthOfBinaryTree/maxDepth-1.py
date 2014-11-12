@@ -31,5 +31,5 @@ if __name__=="__main__":
     arr1 = [5,4,8,11,13,4,7,2,1]
     sol = Solution()
     root1 = TreeUtil.buildTree(arr1)
-    TreeUtil.print_tree_pre(root1);print
+    TreeUtil.print_tree_graph(root1)
     print sol.maxDepth(root1) 

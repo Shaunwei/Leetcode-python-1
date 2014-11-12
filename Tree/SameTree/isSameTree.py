@@ -35,6 +35,6 @@ if __name__=="__main__":
     sol = Solution()
     root1 = TreeUtil.buildTree(arr1)
     root2 = TreeUtil.buildTree(arr2)
-    TreeUtil.print_tree_pre(root1);print
-    TreeUtil.print_tree_pre(root2);print
+    TreeUtil.print_tree_graph(root1)
+    TreeUtil.print_tree_graph(root2)
     print sol.isSameTree(root1,root2) 

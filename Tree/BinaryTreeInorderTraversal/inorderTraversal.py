@@ -44,9 +44,12 @@ class Solution:
 
 
 if __name__=="__main__":
-    arr = [1,2,3,4,5,6]
+    # arr = [1,2,3,4,5,6]
+    arr = [1,'#',2,3]
     sol = Solution()
-    root = TreeUtil.buildTree(arr)
+    # root = TreeUtil.buildTree(arr)
+    root = TreeUtil.buildLeetTree(arr)
+    TreeUtil.print_tree_graph(root)
     TreeUtil.print_tree(root,'in-order');print
     print Solution().inorderTraversal(root)
 

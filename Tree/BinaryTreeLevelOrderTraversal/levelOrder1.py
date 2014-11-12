@@ -3,7 +3,7 @@
 """
 Binary Tree Level Order Traversal 
 
-GGiven a binary tree, return the level order traversal of its nodes' values. 
+Given a binary tree, return the level order traversal of its nodes' values. 
 (ie, from left to right, level by level).
 
 For example:
@@ -24,47 +24,48 @@ import sys
 sys.path.append("C:/code_temp/Leetcode-python/Tree")
 import TreeUtil
 
-# Definition for a  binary tree node
 # class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
+#         self.next = None
 
 class Solution:
     # @param root, a tree node
     # @return a list of lists of integers
     def levelOrder(self, root):
-        q1, q2, lvl, res = [], [], [], []
-        if root == None: return res
-        q1.append(root)
-        while True:
-            while q1:
-                node = q1.pop(0)
-                if node.left: q2.append(node.left)
-                if node.right: q2.append(node.right)
-                lvl.append(node.val)    
-            res.append(lvl)
-            lvl, q1, q2 = [], q2, []
-            if not q1:
-                return res
+        res, q = [], []
+        if root == None:
+            return res
+        q.append([root, 1])
+        while q:
+            node, dep = q.pop()
+            if len(res) < dep:
+                res.append([node.val])
+            else:
+                res[dep-1].append(node.val)
+            if node.right:
+                q.append([node.right, dep + 1])        
+            if node.left:
+                q.append([node.left, dep + 1])
+        return res
 
 if __name__=="__main__":
-    arr = [1,2,3,4,5,6]
+    # arr = [1,2,3,4,5,6]
+    arr = [3,9,20,'#','#',15,7]
     sol = Solution()
-    root = TreeUtil.buildTree(arr)
+    # root = TreeUtil.buildTree(arr)
+    root = TreeUtil.buildLeetTree(arr)
+    TreeUtil.print_tree_graph(root)
     TreeUtil.print_tree_level(root);print
     print Solution().levelOrder(root)
 
 """
-The output is slightly different from the classical level-order problem, 
-which do not require the level information. So in this problem one way to 
-get the level is using another queue to save the current level nodes.
-
-The main steps are:
-1. Push the root node into queue 1, which is level 1 (or 0)
-2. Pop all the nodes from queue 1 to get the current level, for each poped node, 
-push their left child and right child into queue 2.
-3. Set queue 1 = queue 2.
-4. clear queue 2.
+The basic idea is still traversing the binary tree in level order (up-down). 
+We can just use a vector to store the nodes and its level, set a pointer, 
+each time move forward one and push its children into the vector. 
+When all the nodes are visited, the vector become the up-down nodes in 
+level order with level information. A simple loop can handle the output requirement.
+The complexity is O(n), n is the number of nodes in the binary tree.
 """

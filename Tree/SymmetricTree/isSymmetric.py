@@ -25,7 +25,8 @@ Bonus points if you could solve it both recursively and iteratively.
 confused what "{1,#,2,3}" means? > read more on how binary tree is serialized on OJ.
 
 OJ's Binary Tree Serialization:
-The serialization of a binary tree follows a level order traversal, where '#' signifies a path terminator where no node exists below.
+The serialization of a binary tree follows a level order traversal, where '#' 
+signifies a path terminator where no node exists below.
 
 Here's an example:
    1
@@ -63,11 +64,13 @@ class Solution:
             and self.checkSym(left.right,right.left)
 
 if __name__=="__main__":
-    arr1 = [1,2,2,3,4,4,3] # [1,2,2,#,3,#,3]
+    # arr = [1,2,2,3,4,4,3]
+    arr = [1,2,2,'#',3,'#',3]
     sol = Solution()
-    root1 = TreeUtil.buildTree(arr1)
-    TreeUtil.print_tree_pre(root1);print
-    print sol.isSymmetric(root1) 
+    # root = TreeUtil.buildTree(arr)
+    root = TreeUtil.buildLeetTree(arr)
+    TreeUtil.print_tree_graph(root)
+    print sol.isSymmetric(root) 
 
 """
 Recursive way, symmetric if:

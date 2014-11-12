@@ -35,19 +35,25 @@ class Solution:
     # @param root, a tree node
     # @return a list of lists of integers
     def levelOrder(self, root):
-        q1, q2, lvl, res = [], [], [], []
-        if root == None: return res
-        q1.append(root)
-        while True:
-            while q1:
-                node = q1.pop(0)
-                if node.left: q2.append(node.left)
-                if node.right: q2.append(node.right)
-                lvl.append(node.val)    
-            res.append(lvl)
-            lvl, q1, q2 = [], q2, []
-            if not q1:
-                return res
+        if root == None: return []
+        res, self.L = [], {}
+        self.preOrder(root, 0)
+        for i in sorted(self.L.keys()):
+            res.append(self.L[i])
+        return res
+     
+    def preOrder(self, root, level):
+        if level in self.L:
+            self.L[level].append(root.val)
+        else:
+            self.L[level] = [root.val]
+        if root.left:
+            self.preOrder(root.left, level + 1)
+        if root.right:
+            self.preOrder(root.right, level + 1)
+        return
+        
+
 
 if __name__=="__main__":
     # arr = [1,2,3,4,5,6]
@@ -60,14 +66,6 @@ if __name__=="__main__":
     print Solution().levelOrder(root)
 
 """
-The output is slightly different from the classical level-order problem, 
-which do not require the level information. So in this problem one way to 
-get the level is using another queue to save the current level nodes.
-
-The main steps are:
-1. Push the root node into queue 1, which is level 1 (or 0)
-2. Pop all the nodes from queue 1 to get the current level, for each poped node, 
-push their left child and right child into queue 2.
-3. Set queue 1 = queue 2.
-4. clear queue 2.
+Use pre-order traversal first, and store the level number,
+then output result.
 """

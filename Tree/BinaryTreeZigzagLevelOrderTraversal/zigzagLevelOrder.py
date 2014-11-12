@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
 """
-Binary Tree Level Order Traversal 
+Binary Tree Zigzag Level Order Traversal 
 
-Given a binary tree, return the level order traversal of its nodes' values. 
-(ie, from left to right, level by level).
+Given a binary tree, return the zigzag level order traversal 
+of its nodes' values. (ie, from left to right, then right to 
+  left for the next level and alternate between).
 
 For example:
 Given binary tree {3,9,20,#,#,15,7},
@@ -13,10 +14,10 @@ Given binary tree {3,9,20,#,#,15,7},
   9  20
     /  \
    15   7
-return its level order traversal as:
+return its zigzag level order traversal as:
 [
   [3],
-  [9,20],
+  [20,9],
   [15,7]
 ]
 """
@@ -34,8 +35,8 @@ import TreeUtil
 class Solution:
     # @param root, a tree node
     # @return a list of lists of integers
-    def levelOrder(self, root):
-        q1, q2, lvl, res = [], [], [], []
+    def zigzagLevelOrder(self, root):
+        q1, q2, lvl, res, even = [], [], [], [], True
         if root == None: return res
         q1.append(root)
         while True:
@@ -43,9 +44,10 @@ class Solution:
                 node = q1.pop(0)
                 if node.left: q2.append(node.left)
                 if node.right: q2.append(node.right)
-                lvl.append(node.val)    
+                if even: lvl.append(node.val)
+                else: lvl.insert(0,node.val)
             res.append(lvl)
-            lvl, q1, q2 = [], q2, []
+            lvl, q1, q2, even = [], q2, [], not even
             if not q1:
                 return res
 
@@ -56,8 +58,7 @@ if __name__=="__main__":
     # root = TreeUtil.buildTree(arr)
     root = TreeUtil.buildLeetTree(arr)
     TreeUtil.print_tree_graph(root)
-    TreeUtil.print_tree_level(root);print
-    print Solution().levelOrder(root)
+    print Solution().zigzagLevelOrder(root)
 
 """
 The output is slightly different from the classical level-order problem, 

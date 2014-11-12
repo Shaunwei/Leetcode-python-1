@@ -52,9 +52,11 @@ class Solution:
             self.getPath(root.right, valList + [root.right.val], currSum + root.right.val)
 
 if __name__=="__main__":
-    arr = [5,4,8,11,13,4,7,2,1,5]
+    # arr = [5,4,8,11,13,4,7,2,1]
+    arr = [5,4,8,11,'#',13,4,7,2,'#','#',5,1]
     sol = Solution()
-    root = TreeUtil.buildTree(arr)
+    # root = TreeUtil.buildTree(arr)
+    root = TreeUtil.buildLeetTree(arr)
     summ = 22
-    TreeUtil.print_tree_pre(root);print
+    TreeUtil.print_tree_graph(root)
     print sol.pathSum(root,summ) 

@@ -34,8 +34,8 @@ class Solution:
         return (max(lh,rh)+1, lblan and rblan and abs(lh-rh)<=1)
 
 if __name__=="__main__":
-    arr1 = [5,4,8,11,13,4,7,2,1]
+    arr = [5,4,8,11,13,4,7,2,1]
     sol = Solution()
-    root1 = TreeUtil.buildTree(arr1)
-    TreeUtil.print_tree_pre(root1);print
-    print sol.isBalanced(root1) 
+    root = TreeUtil.buildTree(arr)
+    TreeUtil.print_tree_graph(root)
+    print sol.isBalanced(root) 

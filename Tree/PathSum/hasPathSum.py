@@ -40,9 +40,11 @@ class Solution:
         return False
 
 if __name__=="__main__":
-    arr = [5,4,8,11,13,4,7,2,1]
+    # arr = [5,4,8,11,13,4,7,2,1]
+    arr = [5,4,8,11,'#',13,4,7,2,'#','#','#',1]
     sol = Solution()
-    root = TreeUtil.buildTree(arr)
+    # root = TreeUtil.buildTree(arr)
+    root = TreeUtil.buildLeetTree(arr)
     summ = 22
-    TreeUtil.print_tree_pre(root);print
+    TreeUtil.print_tree_graph(root)
     print sol.hasPathSum(root,summ) 
