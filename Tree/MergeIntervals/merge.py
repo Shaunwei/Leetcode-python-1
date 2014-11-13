@@ -9,8 +9,8 @@ For example,
 Given [1,3],[2,6],[8,10],[15,18],
 return [1,6],[8,10],[15,18].
 """
-import sys
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
 
 # Definition for an interval.

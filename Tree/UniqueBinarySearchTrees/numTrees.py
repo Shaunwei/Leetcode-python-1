@@ -14,8 +14,8 @@ Given n = 3, there are a total of 5 unique BST's.
     /     /       \                 \
    2     1         2                 3
 """
-import sys
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
 
 # Definition for a  binary tree node

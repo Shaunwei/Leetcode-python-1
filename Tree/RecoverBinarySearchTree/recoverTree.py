@@ -11,8 +11,8 @@ Note:
 A solution using O(n) space is pretty straight forward. 
 Could you devise a constant space solution?
 """
-import sys
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
 
 # Definition for a  binary tree node

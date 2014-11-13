@@ -6,9 +6,8 @@ Convert Sorted List to Binary Search Tree
 Given a singly linked list where elements are sorted in ascending order,
 convert it to a height balanced BST.
 """
-import sys
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
 
 # Definition for a  binary tree node

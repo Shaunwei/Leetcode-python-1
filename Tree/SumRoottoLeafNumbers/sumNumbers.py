@@ -20,8 +20,8 @@ The root-to-leaf path 1->3 represents the number 13.
 
 Return the sum = 12 + 13 = 25.
 """
-import sys
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
 
 # Definition for a  binary tree node

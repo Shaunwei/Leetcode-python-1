@@ -17,8 +17,8 @@ Given the below binary tree and sum = 22,
         7    2      1
 return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 """
-import sys
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
 
 # Definition for a  binary tree node

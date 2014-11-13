@@ -9,8 +9,8 @@ For this problem, a height-balanced binary tree is defined
 as a binary tree in which the depth of the two subtrees of 
 every node never differ by more than 1.
 """
-import sys
-sys.path.append("C:/code_temp/Leetcode-python/Tree")
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
 
 # Definition for a  binary tree node
