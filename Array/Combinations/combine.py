@@ -24,7 +24,6 @@ class Solution:
         result = []
         if k == 0:
             return result
-        #comb = [0 for i in xrange(k)]
         comb = [0] * k
         p = 0
         while p >= 0:
