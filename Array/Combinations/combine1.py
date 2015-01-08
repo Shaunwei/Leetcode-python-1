@@ -40,10 +40,6 @@ if __name__=="__main__":
     print Solution().combine(4,3) # 4,2
 
 """
-counting p, when p reach the maximum number k, then moving p forward.
-For example, combine(5,3), when get [1,2,5], p point to poistion 3rd and 
-it reach maximum number 5, then p move to position 2nd, comb[p] += 1,
-so we get [1,3,4]. And when p in position 1st reach the maximum k, such as
-[3,4,5], then program end.
+using DFS.
 """
 

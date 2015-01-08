@@ -50,15 +50,16 @@ if __name__=="__main__":
 
 """
 Two iterations:
-1. 1st pointer from 1 to index end-2
-2. while (2nd<3rd)
+1. sort the array first
+2. 1st pointer from 1 to index end-2
+3. while (2nd<3rd)
 
 Conditions:
-1. if (array[1st]+array[2nd]+array[3rd]==0), get one result
-2. if (array[1st]+array[2nd]+array[3rd]>0), 3rd -1
-3. if (array[1st]+array[2nd]+array[3rd]<0), 2nd +1
+1. if (array[1st]+array[2nd]+array[3rd]==0), get one result, 2nd+1 and 3rd-1
+2. if (array[1st]+array[2nd]+array[3rd]>0), 3rd-1
+3. if (array[1st]+array[2nd]+array[3rd]<0), 2nd+1
 
-Notice for the same element, need to skip them.
+Notice for the same elements, need to skip them.
 """
 
 

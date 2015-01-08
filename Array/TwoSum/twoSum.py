@@ -36,5 +36,7 @@ if __name__=="__main__":
     target = 0 #9
     print Solution().twoSum(num, target)
 
-
-
+"""
+Need to notice the situation when two numbers are same:
+num=[0,4,3,0], target=0
+"""

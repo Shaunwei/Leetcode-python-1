@@ -27,13 +27,11 @@ class Solution:
                 # A[left] may equal to target
                 if A[left] <= target < A[mid]:
                     right = mid - 1
-                else:
-                    left = mid + 1
+                else: left = mid + 1
             else: # the right hand side is increasing
                 if A[mid] < target <= A[right]:
                     left = mid + 1
-                else:
-                    right = mid - 1
+                else: right = mid - 1
         return -1       
 
 if __name__=="__main__":

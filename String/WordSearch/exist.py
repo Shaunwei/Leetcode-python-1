@@ -26,34 +26,29 @@ class Solution:
     # @param word, a string
     # @return a boolean
     def exist(self, board, word):
-        self.rowLen, self.colLen = len(board), len(board[0])
-        for i in xrange(self.rowLen):
-            for j in xrange(self.colLen):
+        for i in xrange(len(board)):
+            for j in xrange(len(board[0])):
                 if board[i][j] == word[0]:
                     if self.dfs(board, i, j, word[1:]): return True
         return False
          
     def dfs(self, board, r, c, word):
         if len(word) == 0: return True
-        # Up
-        if (r > 0 and board[r - 1][c] == word[0]):
+        if r > 0 and board[r-1][c] == word[0]: # Up
             ch, board[r][c] = board[r][c], '#'
-            if self.dfs(board, r - 1, c, word[1:]): return True
+            if self.dfs(board, r-1, c, word[1:]): return True
             board[r][c] = ch
-        # Down
-        if (r < self.rowLen - 1 and board[r + 1][c] == word[0]):
+        if r < len(board)-1 and board[r+1][c] == word[0]: # Down
             ch, board[r][c] = board[r][c], '#'
-            if self.dfs(board, r + 1, c, word[1:]): return True
+            if self.dfs(board, r+1, c, word[1:]): return True
             board[r][c] = ch
-        # Left
-        if (c > 0 and board[r][c - 1] == word[0]):
+        if c > 0 and board[r][c-1] == word[0]: # Left
             ch, board[r][c] = board[r][c], '#'
-            if self.dfs(board, r, c - 1, word[1:]): return True
+            if self.dfs(board, r, c-1, word[1:]): return True
             board[r][c] = ch    
-        # Right
-        if (c < self.colLen - 1 and board[r][c + 1] == word[0]):
+        if c < len(board[0])-1 and board[r][c+1] == word[0]: # Right
             ch, board[r][c] = board[r][c], '#'
-            if self.dfs(board, r, c + 1, word[1:]): return True
+            if self.dfs(board, r, c+1, word[1:]): return True
             board[r][c] = ch    
         return False
 

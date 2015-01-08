@@ -3,7 +3,9 @@
 """
 Longest Palindromic Substring
 
-Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.
+Given a string S, find the longest palindromic substring in S. 
+You may assume that the maximum length of S is 1000, and there 
+exists one unique longest palindromic substring.
 """
 
 
@@ -24,9 +26,27 @@ class Solution:
         
 if __name__=="__main__":
     #s = 'abccb'
-    s1="nypdmqqgauepeyfvwcdpbmmaxfwxmmtswfuwldtvqcisywalfnvovuordczxlyzqmslxilpnenbuwbcpebneovitwkkswsijajnkwkfbxnulmwotgrmpklntfyjavccbrgwqynryeoswmhsqzcwnudkuvfkikjxjkjpghsytjfkpvkjpvblamdeegeohospporbtorkbuggbawgodhxpscfksjbirxvjyjapwwushmnqsxktnslvonlwvuseinrmwvfqjgzpkwcqfzfdbbmcngmsoeegudwjvldqmaomwbqvijesnpxiqvtfeiqebrfjhtvjdwkopyfzaslewdjnkmalvfinbuouwcgnfecjtdzwycxrynxepbcsroyzrsgiiuaszvatwyuxinwhni"
-    s2="civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
-
+    s1="nypdmqqgauepeyfvwcdpbmmaxfwxmmtswfuwldtvqcisywalfnvovuordczxlyzqmslxil\
+    pnenbuwbcpebneovitwkkswsijajnkwkfbxnulmwotgrmpklntfyjavccbrgwqynryeoswmhsq\
+    zcwnudkuvfkikjxjkjpghsytjfkpvkjpvblamdeegeohospporbtorkbuggbawgodhxpscfksj\
+    birxvjyjapwwushmnqsxktnslvonlwvuseinrmwvfqjgzpkwcqfzfdbbmcngmsoeegudwjvldq\
+    maomwbqvijesnpxiqvtfeiqebrfjhtvjdwkopyfzaslewdjnkmalvfinbuouwcgnfecjtdzwyc\
+    xrynxepbcsroyzrsgiiuaszvatwyuxinwhni"
+    s2="civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedca\
+    nlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaport\
+    ionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnatio\
+    nmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersenseweca\
+    nnotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivingandd\
+    eadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTghew\
+    orldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhatth\
+    eydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhicht\
+    heywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedto\
+    thegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevoti\
+    ontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyre\
+    solvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanew\
+    birthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotper\
+    ishfromtheearth"
+    print Solution().longestPalindrome(s1)
     print Solution().longestPalindrome(s2)
 
 """
@@ -45,7 +65,7 @@ define a relation,
 P[i,j] = string area [i,j] whether is palindrome.
 
 look at an example: S="abccb",
-  S =   a  b  c  c  b
+  S   = a  b  c  c  b
 Index = 0  1  2  3  4
 
 P[0,0] = true  //each char is a palindrome
@@ -60,5 +80,8 @@ P[i,j] = true  if i == j
        = S[i]==S[j] && P[i+1][j-1]  if j > i+1
 
 This version is TLE(Time Limit Exceeded)
+
+Manacher’s algorithm:
+http://leetcode.com/2011/11/longest-palindromic-substring-part-ii.html
 """
 

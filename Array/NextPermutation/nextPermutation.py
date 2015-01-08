@@ -50,7 +50,7 @@ if __name__=="__main__":
 
 """
 1. From right to left, find the first digit (PartitionNumber) which 
-violates the increase trend.
+violates the decrease trend.
 2. From right to left, find the first digit which is larger than 
 PartitionNumber, call it ChangeNumber.
 3. Swap PartitionNumber and ChangeNumber.

@@ -1,18 +1,22 @@
 #!/usr/bin/python
+"""
+Remove Nth Node From End of List
 
-# Remove Nth Node From End of List
+Given a linked list, remove the nth node from the end of list and return its head.
 
-# Given a linked list, remove the nth node from the end of list and return its head.
+For example,
 
-# For example,
+Given linked list: 1->2->3->4->5, and n = 2.
 
-# Given linked list: 1->2->3->4->5, and n = 2.
+After removing the second node from the end, the linked list becomes 1->2->3->5.
 
-# After removing the second node from the end, the linked list becomes 1->2->3->5.
-
-# Note:
-# Given n will always be valid.
-# Try to do this in one pass. 
+Note:
+Given n will always be valid.
+Try to do this in one pass. 
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 
 # Definition for singly-linked list.
 class ListNode:
@@ -35,25 +39,9 @@ class Solution:
                 prev = prev.next
         prev.next = prev.next.next
         return dumhead.next
-       
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
 
 if __name__=="__main__":
     arr = [1,2,3,4,5,6,7,8,9]
-    sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.removeNthFromEnd(head,9))     
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(Solution().removeNthFromEnd(head,9))     

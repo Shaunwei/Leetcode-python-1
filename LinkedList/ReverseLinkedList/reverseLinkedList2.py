@@ -1,7 +1,10 @@
 #!/usr/bin/python
-
-# Reverse a linked list.
-
+"""
+Reverse a linked list.
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -26,25 +29,9 @@ class Solution:
             prev.next.next = temp
         return dumhead.next
 
-    def printList(self,head):
-        if not head: print "None"
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
-
 if __name__=="__main__":
     arr = list(range(1,10))
     sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.reverseLinkedList(head))
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(sol.reverseLinkedList(head))

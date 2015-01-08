@@ -1,13 +1,16 @@
 #!/usr/bin/python
+"""
+Remove Duplicates from Sorted List 
 
-# Remove Duplicates from Sorted List 
+Given a sorted linked list, delete all duplicates such that each element appear only once.
 
-# Given a sorted linked list, delete all duplicates such that each element appear only once.
-
-# For example,
-# Given 1->1->2, return 1->2.
-# Given 1->1->2->3->3, return 1->2->3.
-
+For example,
+Given 1->1->2, return 1->2.
+Given 1->1->2->3->3, return 1->2->3.
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -26,25 +29,9 @@ class Solution:
             else:
                 curr = curr.next
         return head
-       
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
 
 if __name__=="__main__":
     arr = [1,1,2,3,3]
-    sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.deleteDuplicates(head))     
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList( Solution().deleteDuplicates(head))     

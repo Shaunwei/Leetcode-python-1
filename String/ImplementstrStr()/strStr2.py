@@ -5,18 +5,19 @@ Implement strStr()
 
 Implement strStr().
 
-Returns a pointer to the first occurrence of needle in haystack, or null if needle is not part of haystack.
+Returns the index of the first occurrence of needle in haystack, 
+or -1 if needle is not part of haystack.
 """
 
 class Solution:
     # @param haystack, a string
     # @param needle, a string
-    # @return a string or None
+    # @return an integer
     def strStr(self, haystack, needle):
-        if haystack==needle and len(needle) == 0: return ''
-        if len(needle) == 0: return haystack
+        if haystack==needle and len(needle) == 0: return 0
+        if len(needle) == 0: return 0
         result = haystack.find(needle)
-        return haystack[result:] if result !=-1 else None     
+        return result   
 
 if __name__=="__main__":
     s = 'This is a simple string'

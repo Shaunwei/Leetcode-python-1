@@ -33,5 +33,14 @@ if __name__=="__main__":
 There is a greedy way to solve this problem in O(n). Use two pointers, 
 one from the start and one from the end of the height vector. 
 Compute the current area, move the smaller pointer to its direction, 
-until two pointers meet.
+until two pointers meet. For example: height = [1,5,3,7]
+                _
+               | |
+      _        | |
+     | |       | |
+     | |   _   | |
+     | |  | |//| |
+ _   | |  | |//| |
+| |  | |  | |//| | 
+------------------
 """

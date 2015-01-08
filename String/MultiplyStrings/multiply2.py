@@ -35,17 +35,15 @@ if __name__=="__main__":
     print Solution().multiply(num2,num1)
     
 """
-Straight forward idea. Just like the way we multiply numbers. Don't forget considering the carry and be careful. e.g.
-exit()
+Straight forward idea. Just like the way we multiply numbers. Don't forget 
+considering the carry and be careful. e.g.
   123*456,
 
 what we usually do is:
 
-
       123
-*     456
+x     456
 -----------
-
       738
      615
 +   492

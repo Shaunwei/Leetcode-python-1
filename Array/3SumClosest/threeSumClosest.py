@@ -43,3 +43,9 @@ if __name__=="__main__":
     num = [1,1,1,0] #[-1, 2, 1, -4] 
     target = -100 # 1
     print Solution().threeSumClosest(num,target)
+
+"""
+The code is slight different from the 3 sum problem, 
+just change the if condition, the key point is to get 
+the distances between the target and the output value.
+"""

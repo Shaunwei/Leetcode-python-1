@@ -27,7 +27,7 @@ class Solution:
         factorial = math.factorial(n-1)
         num = [i for i in xrange(1, n + 1)]
         for i in reversed(xrange(n)):
-            curr = num[k / factorial]
+            curr = num[k/factorial]
             result += str(curr)
             num.remove(curr)
             if i != 0:
@@ -36,11 +36,11 @@ class Solution:
         return result
 
 if __name__=="__main__":
-    n, k = 9, 54494 # 3, 5
+    n, k = 3, 5 # 9, 54494 #
     print Solution().getPermutation(n,k)
 
 """
-Let num = [1,2,3,...,n]. Since kth = d*(n-1)!, so the first digit is k/(n-1)!, 
+Let num = [1,2,3,...,n]. kth-permutation = digit*(n-1)!, so the first digit is k/(n-1)!, 
 then let k = k % (n-1)! and remove this digit from num. The second digit is k/(n-2)!, 
 then let k = k % (n-2)! and remove this digit from num and so on.
 """

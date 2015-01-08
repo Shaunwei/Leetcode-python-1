@@ -3,7 +3,9 @@
 """
 Longest Palindromic Substring
 
-Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.
+Given a string S, find the longest palindromic substring in S. 
+You may assume that the maximum length of S is 1000, and there 
+exists one unique longest palindromic substring.
 """
 
 
@@ -11,24 +13,44 @@ Given a string S, find the longest palindromic substring in S. You may assume th
 class Solution:
     # @return a string
     def longestPalindrome(self, s):
-        palindrome = ''
+        palindrome = s[0]
         for i in range(len(s)):
-            len1 = len(self.getlongestpalindrome(s, i, i))
-            if len1 > len(palindrome): palindrome = self.getlongestpalindrome(s, i, i)
-            len2 = len(self.getlongestpalindrome(s, i, i + 1))
-            if len2 > len(palindrome): palindrome = self.getlongestpalindrome(s, i, i + 1)
+            # get longest palindrome with center of i
+            temp = self.getlongestpalindrome(s, i, i)
+            if len(temp) > len(palindrome): palindrome = temp
+            # get longest palindrome with center of i, i+1
+            temp = self.getlongestpalindrome(s, i, i + 1)
+            if len(temp) > len(palindrome): palindrome = temp
         return palindrome
-
+        
+    # Given a center, either one letter or two letter, 
+    # Find longest palindrome
     def getlongestpalindrome(self, s, l, r):
-        while l >= 0 and r < len(s) and s[l] == s[r]:
-            l -= 1; r += 1
+        while l>= 0 and r<len(s) and s[l]==s[r]: l,r=l-1,r+1
         return s[l+1 : r]
         
 if __name__=="__main__":
     #s = 'abccb'
-    s1="nypdmqqgauepeyfvwcdpbmmaxfwxmmtswfuwldtvqcisywalfnvovuordczxlyzqmslxilpnenbuwbcpebneovitwkkswsijajnkwkfbxnulmwotgrmpklntfyjavccbrgwqynryeoswmhsqzcwnudkuvfkikjxjkjpghsytjfkpvkjpvblamdeegeohospporbtorkbuggbawgodhxpscfksjbirxvjyjapwwushmnqsxktnslvonlwvuseinrmwvfqjgzpkwcqfzfdbbmcngmsoeegudwjvldqmaomwbqvijesnpxiqvtfeiqebrfjhtvjdwkopyfzaslewdjnkmalvfinbuouwcgnfecjtdzwycxrynxepbcsroyzrsgiiuaszvatwyuxinwhni"
-    s2="civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
-
+    # s1="nypdmqqgauepeyfvwcdpbmmaxfwxmmtswfuwldtvqcisywalfnvovuordczxlyzqmslxil\
+    # pnenbuwbcpebneovitwkkswsijajnkwkfbxnulmwotgrmpklntfyjavccbrgwqynryeoswmhsq\
+    # zcwnudkuvfkikjxjkjpghsytjfkpvkjpvblamdeegeohospporbtorkbuggbawgodhxpscfksj\
+    # birxvjyjapwwushmnqsxktnslvonlwvuseinrmwvfqjgzpkwcqfzfdbbmcngmsoeegudwjvldq\
+    # maomwbqvijesnpxiqvtfeiqebrfjhtvjdwkopyfzaslewdjnkmalvfinbuouwcgnfecjtdzwyc\
+    # xrynxepbcsroyzrsgiiuaszvatwyuxinwhni"
+    s2="civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedca\
+    nlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaport\
+    ionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnatio\
+    nmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersenseweca\
+    nnotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivingandd\
+    eadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTghew\
+    orldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhatth\
+    eydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhicht\
+    heywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedto\
+    thegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevoti\
+    ontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyre\
+    solvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanew\
+    birthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotper\
+    ishfromtheearth"
     print Solution().longestPalindrome(s2)
 
 """

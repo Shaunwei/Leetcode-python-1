@@ -1,12 +1,17 @@
 #!/usr/bin/python
+"""
+Swap Nodes in Pairs
 
-# Swap Nodes in Pairs
+Given a linked list, swap every two adjacent nodes and return its head.
 
-# Given a linked list, swap every two adjacent nodes and return its head.
-
-# For example:
-# Given 1->2->3->4, you should return the list as 2->1->4->3. 
-# Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.
+For example:
+Given 1->2->3->4, you should return the list as 2->1->4->3. 
+Your algorithm should use only constant space. You may not modify the 
+values in the list, only nodes itself can be changed.
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 
 # Definition for singly-linked list.
 class ListNode:
@@ -31,48 +36,13 @@ class Solution:
             p2.next = p1
             curr.next = p2
             curr = p1
-        return head.next 
-
-    # more easy way, just swap the value of two nodes
-    def swapTwoLinkedList2(self, head, m, n):
-        if not head: return None
-        m,n = min(m,n),max(m,n)
-        first = head
-        second = head
-        count = 0
-        while count < n-1 and first:
-            first = first.next
-            count += 1
-            if count > n-m:
-                second = second.next
-        if not first: return None
-        temp = first.val
-        first.val = second.val
-        second.val = temp
-        return head             
-
-    def printList(self,head):
-        if not head: print "None",
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
+        return head.next           
 
 if __name__=="__main__":
     arr = list(range(1,10))
-    sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.swapPairs(head))
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(Solution().swapPairs(head))
     
 '''
 swap two nodes in linked list scheme::

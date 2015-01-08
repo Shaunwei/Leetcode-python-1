@@ -1,12 +1,17 @@
 #!/usr/bin/python
+"""
+Add Two Numbers
 
-# Add Two Numbers
+You are given two linked lists representing two non-negative numbers. 
+The digits are stored in reverse order and each of their nodes contain 
+a single digit. Add the two numbers and return it as a linked list.
 
-# You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
-
-# Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-# Output: 7 -> 0 -> 8
-
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -33,29 +38,11 @@ class Solution:
             head = head.next
         return dumhead.next 
 
-    def printList(self,head):
-        if not head: print "None",
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
-
 if __name__=="__main__":
-    import random
-    arr1 = random.sample(range(10),5)
-    arr2 = random.sample(range(10),5)
-    sol = Solution()
-    l1 = buildList(arr1)
-    l2 = buildList(arr2)
-    sol.printList(l1)
-    sol.printList(l2)
-    sol.printList(sol.addTwoNumbers(l1,l2))
+    arr1 = LListUtil.randomArr(10,5)
+    arr2 = LListUtil.randomArr(10,5)
+    l1 = LListUtil.buildList(arr1)
+    l2 = LListUtil.buildList(arr2)
+    LListUtil.printList(l1)
+    LListUtil.printList(l2)
+    LListUtil.printList(Solution().addTwoNumbers(l1,l2))

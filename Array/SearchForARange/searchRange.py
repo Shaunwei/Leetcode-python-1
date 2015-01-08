@@ -3,7 +3,8 @@
 """
 Search for a Range
 
-Given a sorted array of integers, find the starting and ending position of a given target value.
+Given a sorted array of integers, find the starting and ending 
+position of a given target value.
 
 Your algorithm's runtime complexity must be in the order of O(log n).
 
@@ -22,17 +23,15 @@ class Solution:
         start, end, res = 0, len(A)-1, [-1, -1]
         while start < end:
             mid = (start+end)/2 
-            if A[mid] < target:
-                start = mid+1; continue
-            end = mid
+            if A[mid] < target: start = mid+1
+            else: end = mid
         low = start if A[start]==target else -1
         if low == -1: return res
         start, end = low, len(A)
         while start < end:
             mid = (start+end)/2 
-            if A[mid] > target:
-                end = mid; continue
-            start = mid + 1
+            if A[mid] > target: end = mid
+            else: start = mid + 1
         high = start - 1
         res = [low, high]
         return res

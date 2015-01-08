@@ -26,6 +26,7 @@ if __name__=="__main__":
     print Solution().longestCommonPrefix(strs)
  
 """
-The idea is scan from the first character, if it is same for all the strings, go to the next character.Return the string until meet the different character.
+The idea is scan from the first character, if it is same for all the strings, go to the 
+next character.Return the string until meet the different character.
 """
 

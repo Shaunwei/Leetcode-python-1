@@ -3,7 +3,8 @@
 """
 Generate Parentheses 
 
-Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+Given n pairs of parentheses, write a function to generate all combinations 
+of well-formed parentheses.
 
 For example, given n = 3, a solution set is:
 
@@ -19,19 +20,20 @@ class Solution:
         self.gen('',0,0)
         return self.result        
 
-    def gen(self, s, leftParaNum, rightParaNuM):
-        if leftParaNum == rightParaNuM == self.n:
+    def gen(self, s, leftParaNum, rightParaNum):
+        if leftParaNum == rightParaNum == self.n:
             self.result.append(s); return
         if leftParaNum < self.n:
-            self.gen(s+'(', leftParaNum+1,rightParaNuM)
-        if rightParaNuM < leftParaNum <= self.n:
-            self.gen(s+')', leftParaNum,rightParaNuM+1)
+            self.gen(s+'(', leftParaNum+1,rightParaNum)
+        if rightParaNum < leftParaNum <= self.n:
+            self.gen(s+')', leftParaNum,rightParaNum+1)
         return
  
 if __name__=="__main__":
     print Solution().generateParenthesis(3)
  
 """
-The classic question from the Cracking the Code Interview. DFS is enough. Note that it is wrong when the number of ')' is more than '(' in the current string. e.g. ()()).
+The classic question from the Cracking the Code Interview. DFS is enough. 
+Note that it is wrong when the number of ')' is more than '(' in the current string. e.g. ()()).
 """
 

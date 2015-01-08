@@ -18,26 +18,21 @@ class Solution:
     # @param n  an integer, length of B
     # @return nothing
     def merge(self, A, m, B, n):
-        i,j,k = m-1,n-1,m+n-1
-        while i>=0 and j>=0:
-            if A[i] < B[j]:
-                A[k] = B[j]
-                j -= 1
-            else:
-                A[k] = A[i]
-                i -= 1
+        m, n, k = m-1, n-1, m+n-1
+        while m>=0 and n>=0:
+            if A[m] < B[n]: A[k], n = B[n], n-1
+            else: A[k], m = A[m], m-1
             k -= 1
-        while j >= 0:
-            A[k] = B[j]
-            j -= 1
-            k -= 1
+        while n>=0: A[k], k, n = B[n], k-1, n-1
     	
-
 if __name__=="__main__":
     A = [2, 7, 11, 15,0,0,0]
     B = [3, 6 , 10]
     Solution().merge(A,4,B,3)
     print A
 
+"""
+Part of the merge sort, merge the arrays from the back by comparing the elements.
+"""
 
 

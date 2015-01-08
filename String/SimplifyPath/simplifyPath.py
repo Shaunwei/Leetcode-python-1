@@ -33,6 +33,9 @@ if __name__=="__main__":
     path2 = '/a/./b/../../c/'
     path3 = '/../'
     path4 = '/home//foo/'
+    print Solution().simplifyPath(path1)
+    print Solution().simplifyPath(path2)
+    print Solution().simplifyPath(path3)
     print Solution().simplifyPath(path4)
 
 '''

@@ -1,13 +1,17 @@
 #!/usr/bin/python
+"""
+Remove Duplicates from Sorted List II 
 
-# Remove Duplicates from Sorted List II 
+Given a sorted linked list, delete all nodes that have duplicate numbers, 
+leaving only distinct numbers from the original list.
 
-# Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
-
-# For example,
-# Given 1->2->3->3->4->4->5, return 1->2->5.
-# Given 1->1->1->2->3, return 2->3. 
-
+For example,
+Given 1->2->3->3->4->4->5, return 1->2->5.
+Given 1->1->1->2->3, return 2->3. 
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -31,26 +35,9 @@ class Solution:
             else:
                 prev = prev.next
         return dumhead.next
-       
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
 
 if __name__=="__main__":
-    arr = [1,2,3,3,4,4,5]
-    #arr = [1,1,1,2,3]
-    sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.deleteDuplicatesII(head))     
+    arr = [1,2,3,3,4,4,5] # [1,1,1,2,3]
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(Solution().deleteDuplicatesII(head))     

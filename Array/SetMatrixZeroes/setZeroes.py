@@ -36,6 +36,3 @@ if __name__=="__main__":
     s = [[1,2,0,3],[1,3,4,5],[2,3,6,7],[1,3,4,5]] 
     Solution().setZeroes(s)
     print s
-
-
-

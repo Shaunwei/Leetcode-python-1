@@ -1,15 +1,20 @@
 #!/usr/bin/python
+"""
+Partition List 
 
-# Partition List 
+Given a linked list and a value x, partition it such that all nodes 
+less than x come before nodes greater than or equal to x. 
 
-# Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x. 
+You should preserve the original relative order of the nodes in each 
+of the two partitions.
 
-# You should preserve the original relative order of the nodes in each of the two partitions.
-
-# For example,
-# Given 1->4->3->2->5->2 and x = 3,
-# return 1->2->2->4->3->5. 
-
+For example,
+Given 1->4->3->2->5->2 and x = 3,
+return 1->2->2->4->3->5. 
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -29,32 +34,20 @@ class Solution:
             if prev.val < x:
                 currLess.next = prev
                 currLess = currLess.next
-                currGreat.next = None
+                currLess.next = None
             else:
                 currGreat.next = prev
                 currGreat = currGreat.next
                 currGreat.next = None
         currLess.next = headGreat.next 
         return headLess.next
-       
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
 
 if __name__=="__main__":
     arr = [1,4,3,2,5,2]
-    sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.partition(head,3))     
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(Solution().partition(head,3))     
+
+"""
+Use two linked lists to separately record nodes < x and nodes >= x.
+"""

@@ -18,14 +18,13 @@ class Solution:
                 if digi <= 3: res += roman[i]*digi
                 elif digi == 4: res += roman[i]+roman[i+1]
                 elif digi == 5: res += roman[i+1]
-                elif digi <= 8: 
-                    res += roman[i+1]; res += roman[i]*(digi-5)
+                elif digi <= 8: res += (roman[i+1]+roman[i]*(digi-5))
                 elif digi == 9: res += roman[i]+roman[i+2]
             num, ran = num%ran, ran/10 
         return res
 
 if __name__=="__main__":
-    num = 14
+    num = 8 #14
     print Solution().intToRoman(num)
 
 """
@@ -41,10 +40,10 @@ M   1000
 
 Idea: 
 Need handle every digit in the range of roman number,
-1<=digit <=3
-digit =4
+1<= digit <=3
+digit = 4
 digit = 5
-5<digit<=8
-digit =9
+5 < digit <= 8
+digit = 9
 """
 

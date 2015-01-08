@@ -26,25 +26,26 @@ class Solution:
     # @param S, a list of integer
     # @return a list of lists of integer
     def subsets(self, S):
-        result = []
-        if len(S) == 0: return result
-        result.append([])
         S.sort()
+        result = []
         self.getSubarr(S,0,result,[])
         return result
-
-    def getSubarr(self, s, step, result, subarr):
-        i = step
-        while i < len(s):
-          subarr.append(s[i])
-          result.append(list(subarr))
-          if i < len(s)-1: self.getSubarr(s,i+1,result,subarr)
-          subarr.pop()
-          while i < len(s)-1 and s[i] == s[i+1]: i += 1
-          i += 1
+    
+    def getSubarr(self, S, index, result, subarr):
+        if index == len(S):
+            result.append(list(subarr))
+        else:
+            i = index
+            while i<len(S) and S[i]==S[index]: i += 1
+            self.getSubarr(S,i,result,subarr)
+            subarr.append(S[index])
+            self.getSubarr(S,index+1,result,subarr)
+            subarr.pop()
 
 if __name__=="__main__":
     s = [1,2,2] 
     print Solution().subsets(s)
 
-
+"""
+Same as Subsets problem, only diffferent is to remove the duplicate.
+"""

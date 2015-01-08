@@ -14,7 +14,7 @@ class Solution:
     def plusOne(self, digits):
         carry = 0
         for i in reversed(xrange(len(digits))):
-            digits[i] = digits[i] + 1 + carry if i == len(digits) - 1 else digits[i] + carry
+            digits[i] = digits[i]+1 if i == len(digits)-1 else digits[i]+carry
             carry = 1 if digits[i] == 10 else 0
             if digits[i] == 10: digits[i] = 0
         return [1] + digits if carry == 1 else digits
@@ -23,6 +23,3 @@ class Solution:
 if __name__=="__main__":
     digits = [9,9,9,9]
     print Solution().plusOne(digits)
-
-
-

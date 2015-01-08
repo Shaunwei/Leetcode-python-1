@@ -18,15 +18,16 @@ class Solution:
     def uniquePaths(self, m, n):
         N = m - 1 + n - 1
         K = min(m, n) - 1
-        result = 1
+        result = 1 # calculate C(N, K)
         for i in xrange(K):
             result = result*(N-i)/(i+1)
         return result 
 
 if __name__=="__main__":
-    m, n = 51, 9 # 7, 3
+    m, n = 7, 3 # 51, 9 # 
     print Solution().uniquePaths(m,n)
-    print Solution().uniquePathsWithObstacles(obstacleGrid)
 
-
-
+"""
+m x n matrix to the end needs m-1 steps down and n-1 steps right,
+so we need to calculate C(m-1+n-1,n-1) or C(m-1+n-1,m-1)
+"""

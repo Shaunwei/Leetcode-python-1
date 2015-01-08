@@ -15,15 +15,17 @@ class Solution:
         strdict = {}
         for s in strs:
             key = ''.join(sorted(s))
-            strdict[key] = [s] if key not in strdict else strdict[key]+[s]
+            strdict[key] = [s] if key not in strdict else strdict[key]+[s] 
         anag = []
         for key in strdict:
-            if len(strdict[key]) > 1:b[
+            if len(strdict[key]) > 1:
                 anag += strdict[key]
-        print strdict
         return anag
 
 if __name__=="__main__":
     s = ['tac','cat','act','dog']
     print Solution().anagrams(s)
 
+"""
+key = sorted word, value = [word1, word2, word3, ...]
+"""
