@@ -38,7 +38,7 @@ if __name__=="__main__":
     TreeUtil.print_tree_graph(root)
 
 """
-Recuesive method:
+Recursive method:
 This problem is similar as Construct Binary Tree From Inorder 
 And Postorder Traversal.
 """

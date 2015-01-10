@@ -1,19 +1,19 @@
 #!/usr/bin/python
+"""
+Palindrome Partitioning 
 
-# Palindrome Partitioning 
+Given a string s, partition s such that every substring of the partition is a palindrome.
 
-# Given a string s, partition s such that every substring of the partition is a palindrome.
+Return all possible palindrome partitioning of s.
 
-# Return all possible palindrome partitioning of s.
+For example, given s = "aab",
+Return
 
-# For example, given s = "aab",
-# Return
-
-#  [
-#    ["aa","b"],
-#    ["a","a","b"]
-#  ]
-
+ [
+   ["aa","b"],
+   ["a","a","b"]
+ ]
+"""
 
 class Solution:
     # @param s, a string
@@ -43,6 +43,8 @@ if __name__=="__main__":
     string = "aab"
     print Solution().partition(string)
 
-'''
-Dynamic programming. First use isPal to record each substring is palindrome or not. "isPal[i][j] == true" means a substring starts from s[i] (included) to s[j] (included) is a palindrome. Then use DFS.
-'''
+"""
+Dynamic programming. First use isPal to record each substring is palindrome or not. 
+"isPal[i][j] == true" means a substring starts from s[i] (included) to s[j] (included) 
+is a palindrome. Then use DFS.
+"""

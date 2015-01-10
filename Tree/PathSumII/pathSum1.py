@@ -36,20 +36,20 @@ class Solution:
     # @param sum, an integer
     # @return a list of lists of integers
     def pathSum(self, root, sum):
-        if root == None: return []
-        self.paths = []
-        self.summ = sum
-        self.getPath(root, [root.val], root.val)
-        return self.paths
+        if not root: return []
+        res = []
+        self.buildPath(root,sum,[],res)
+        return res
          
-    def getPath(self, root, valList, currSum):
+    def buildPath(self, root, sum, currPath, res):
+        if not root: return
+        currval = root.val
+        currPath.append(currval)
         if not root.left and not root.right:
-            if currSum==self.summ: self.paths.append(valList)
-            return
-        if root.left:
-            self.getPath(root.left,valList+[root.left.val],currSum+root.left.val)
-        if root.right:
-            self.getPath(root.right,valList+[root.right.val],currSum+root.right.val)
+            if currval==sum: res.append(list(currPath))
+        self.buildPath(root.left,sum-currval,currPath,res)
+        self.buildPath(root.right,sum-currval,currPath,res)
+        currPath.pop()
 
 if __name__=="__main__":
     # arr = [5,4,8,11,13,4,7,2,1]

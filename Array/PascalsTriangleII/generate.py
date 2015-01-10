@@ -18,20 +18,16 @@ class Solution:
     	triangle = [1]
     	for i in range(1,rowIndex/2+1):
     		triangle.append(triangle[i-1]*(rowIndex+1-i)/i)
-
     	if rowIndex % 2 == 1:
     		triangle += triangle[::-1]
     	else:
     		n = len(triangle)
     		triangle += triangle[n-2::-1]
-
     	return triangle
 
 if __name__=="__main__":
     numRows = 11
     print Solution().getRow(numRows)
-
-
 
 """
 This can be solved in according to the formula to generate 

@@ -45,15 +45,13 @@ class Solution:
     # @param root, a tree node
     # @return nothing, do it in place
     def flatten(self, root):
-        if root == None: 
-            return
+        if not root: return
         self.flatten(root.left)
         self.flatten(root.right)
-        if root.left == None: 
-            return
+        if not root.left: return
         else:
             p = root.left
-            while p.right != None: p = p.right
+            while p.right: p = p.right
             p.right = root.right
             root.right = root.left
             root.left = None

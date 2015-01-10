@@ -35,9 +35,9 @@ class Solution:
     def dfs(self, start, end):
         if start > end: return [None]
         res = []
-        for n in xrange(start, end + 1):
-            leftList = self.dfs(start, n - 1)
-            rightList = self.dfs(n + 1, end)
+        for n in xrange(start,end+1):
+            leftList = self.dfs(start,n-1)
+            rightList = self.dfs(n+1,end)
             for i in leftList:
                 for j in rightList:
                     root = TreeNode(n)
@@ -61,11 +61,11 @@ the right subtree with the right part.
 
 So first we can have
 void dfs (int st, int ed){
-    if (st>ed) {   // generate a null node }
+    if (st>ed) { // generate a null node }
     else{
-      for (int i=st;i<=ed;i++){  
-        dfs(st,i-1,   );     //generate left subtree 
-        dfs(i+1,ed,   );  // generate right subtree
+      for(int i=st;i<=ed;i++){  
+        dfs(st,i-1); //generate left subtree 
+        dfs(i+1,ed); // generate right subtree
       }
     }
 }

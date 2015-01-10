@@ -38,7 +38,7 @@ if __name__=="__main__":
     TreeUtil.print_tree_graph(root)
 
 """
-Recuesive method:
+Recursive method:
 1. Find the last node in the postorder vector, which is the root of the current tree.
 2. Find the position of root node in the inorder vector, which divide the inorder vector 
 into 2 sub tree inorder vectors. Left part is the left sub-tree, right part is the right sub-tree.

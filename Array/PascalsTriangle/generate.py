@@ -22,18 +22,14 @@ class Solution:
     	if numRows == 1: return [[1]]
     	if numRows == 2: return [[1], [1,1]]
     	triangle = [[1], [1,1]]
-    	if numRows > 2:
-    		for i in range(numRows-2):
-    			arr = [1]
-    			for j in range(len(triangle[i+1])-1):
-    				arr.append(triangle[i+1][j]+triangle[i+1][j+1])
-    			arr.append(1)
-    			triangle.append(arr)
-    		return triangle
+    	for i in range(numRows-2):
+    		arr = [1]
+    		for j in range(len(triangle[i+1])-1):
+    			arr.append(triangle[i+1][j]+triangle[i+1][j+1])
+    		arr.append(1)
+    		triangle.append(arr)
+    	return triangle
 
 if __name__=="__main__":
     numRows = 5
     print Solution().generate(numRows)
-
-
-

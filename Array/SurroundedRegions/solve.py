@@ -60,6 +60,8 @@ if __name__=='__main__':
    
 '''
 Search is a way to solve this problem!
-If 'O' in the four sides of baord, they won't be surround by 'X'; so we can start from those 'O', and using BFS to get all the conjoint 'O', then repalce then to '$'. After that, just repalce all rest 'O' to 'X', then replace all '$' back to 'O'. 
+If 'O' in the four sides of baord, they won't be surround by 'X'; so we can start from those 'O', 
+and using BFS to get all the conjoint 'O', then repalce then to '$'. After that, just repalce all 
+rest 'O' to 'X', then replace all '$' back to 'O'. 
 '''
 

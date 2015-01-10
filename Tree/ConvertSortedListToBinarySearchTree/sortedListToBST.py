@@ -52,7 +52,6 @@ def buildList(arr):
 if __name__=="__main__":
     arr = [1,2,3,4,5,6]
     head = buildList(arr)
-    sol = Solution()
     root = Solution().sortedListToBST(head)
     # TreeUtil.print_tree_level(root);print
     TreeUtil.print_tree_graph(root)

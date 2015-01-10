@@ -12,7 +12,8 @@ The right subtree of a node contains only nodes with keys greater than the node'
 Both the left and right subtrees must also be binary search trees.
 
 OJ's Binary Tree Serialization:
-The serialization of a binary tree follows a level order traversal, where '#' signifies a path terminator where no node exists below.
+The serialization of a binary tree follows a level order traversal, where '#' signifies 
+a path terminator where no node exists below.
 
 Here's an example:
    1

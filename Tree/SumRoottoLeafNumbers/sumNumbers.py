@@ -36,15 +36,15 @@ class Solution:
     # @return an integer
     def sumNumbers(self, root):
         if root == None: return 0
-        if root.left == None and root.right == None: return root.val
+        if not root.left and root.right: return root.val
         self.res = 0
         if root.left: self.dfs(root.left, root.val)
         if root.right: self.dfs(root.right, root.val)
         return self.res
      
     def dfs(self, node, value):
-        if node == None: return
-        if node.left == None and node.right == None:
+        if not node: return
+        if not node.left and not node.right:
             self.res += 10 * value + node.val
         self.dfs(node.left, 10 * value + node.val)
         self.dfs(node.right, 10 * value + node.val)

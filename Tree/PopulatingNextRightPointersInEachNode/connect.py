@@ -51,7 +51,7 @@ class Solution:
     # @param root, a tree node
     # @return nothing
     def connect(self, root):
-        if root == None: return
+        if not root: return
         curNodeNum = 0
         queue = []
         queue.append(root)
@@ -61,7 +61,7 @@ class Solution:
             if curr.left:
                 queue.append(curr.left)
                 queue.append(curr.right)
-            curr.next = None if curNodeNum & (curNodeNum + 1) == 0 else queue[0]
+            curr.next = None if curNodeNum & (curNodeNum+1)==0 else queue[0]
 
    
 

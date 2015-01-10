@@ -46,12 +46,11 @@ class Solution:
     # @return nothing, do it in place
     def flatten(self, root):
         while root:
-            if root.left == None:
+            if not root.left:
                 root = root.right
             else:
                 tmp = root.left
-                while tmp.right:
-                    tmp = tmp.right
+                while tmp.right: tmp = tmp.right
                 tmp.right = root.right
                 root.right = root.left
                 root.left = None

@@ -36,8 +36,7 @@ class Solution:
     # @return a list of lists of integers
     def levelOrder(self, root):
         res, q = [], []
-        if root == None:
-            return res
+        if root == None: return res
         q.append([root, 1])
         while q:
             node, dep = q.pop()

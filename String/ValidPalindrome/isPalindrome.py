@@ -23,12 +23,11 @@ class Solution:
             if '0' <= c <= '9' or 'a' <= c <= 'z':
                 strarr.append(c)
         return strarr == strarr[::-1]
- 
-        
+
 if __name__=="__main__":
     string1 = "A man, a plan, a canal: Panama"
     string2 = "race a car"
     print "\"%s\""%string1
     print Solution().isPalindrome(string1)
-    print "\"%s\""string2
+    print "\"%s\""%string2
     print Solution().isPalindrome(string2)

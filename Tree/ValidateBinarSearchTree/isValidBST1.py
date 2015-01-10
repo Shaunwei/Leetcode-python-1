@@ -12,7 +12,8 @@ The right subtree of a node contains only nodes with keys greater than the node'
 Both the left and right subtrees must also be binary search trees.
 
 OJ's Binary Tree Serialization:
-The serialization of a binary tree follows a level order traversal, where '#' signifies a path terminator where no node exists below.
+The serialization of a binary tree follows a level order traversal, where '#' signifies 
+a path terminator where no node exists below.
 
 Here's an example:
    1
@@ -39,17 +40,18 @@ class Solution:
     # @param root, a tree node
     # @return a boolean
     def isValidBST(self, root):
-        infint = 10 ** 10
-        return self.check(-infint, root, infint)
+        return self.verifyBST(root,False,False,0,0)
 
-    def check(self, Min, root, Max):
+    def verifyBST(self, root, left, right, lmax, rmin):
         if root == None: return True
-        if not Min < root.val < Max: return False
-        return self.check(Min, root.left, root.val) \
-            and self.check(root.val, root.right, Max)
+        if left and root.val >= lmax: return False
+        if right and root.val <= rmin: return False
+        leftValid = self.verifyBST(root.left,True,right,root.val,rmin)
+        rightValid = self.verifyBST(root.right,left,True,lmax,root.val)
+        return leftValid and rightValid
 
 if __name__=="__main__":
-    arr1 = [0] # [5,4,8,11,13,6,7,2,1] #[1,1]
+    arr1 = [1,1] # [0] # [5,4,8,11,13,6,7,2,1]
     sol = Solution()
     root1 = TreeUtil.buildTreeInOrder(arr1)
     root2 = TreeUtil.buildTree(arr1)
@@ -57,6 +59,9 @@ if __name__=="__main__":
     print sol.isValidBST(root2) 
 
 """
-Using left bound and right to validate.
-Think more about the node than tree.
+For each subtree, give it max and min bound, if outside return fasle.
+But for root node there is no bound.
+For each level root, left subtree max bound should less than root,
+right subtree min bound should greater than root.
+Notice that for recursive call, should input parent node value.
 """

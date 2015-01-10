@@ -33,10 +33,10 @@ class Solution:
     # @param sum, an integer
     # @return a boolean
     def hasPathSum(self, root, sum):
-        if root == None: return False
-        if root.val == sum and root.left == None and root.right == None: return True
-        if root.left != None and self.hasPathSum(root.left, sum - root.val): return True
-        if root.right != None and self.hasPathSum(root.right, sum - root.val): return True
+        if not root: return False
+        if root.val==sum and not root.left and not root.right: return True
+        if root.left and self.hasPathSum(root.left, sum-root.val): return True
+        if root.right and self.hasPathSum(root.right, sum-root.val): return True
         return False
 
 if __name__=="__main__":

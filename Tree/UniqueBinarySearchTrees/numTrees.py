@@ -71,7 +71,7 @@ when 1 is the root node, bst[3] =  bst[3] + bst[2] where stores 2 values (2 and 
  BSTs of {2,3}             2                   3
                             \                 /
                              3               2
-when 2 is the root node, bst[3] =  bst[3] + bst[1] + bst[1]
+when 2 is the root node, bst[3] =  bst[3] + bst[1]
           2
          / \
         1   3
