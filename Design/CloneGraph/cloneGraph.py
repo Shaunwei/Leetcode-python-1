@@ -41,7 +41,7 @@ class Solution:
     # @param node, a undirected graph node
     # @return a undirected graph node
     def cloneGraph(self, node):
-    	if node == None: return None
+    	if not node: return None
         newNodes = {node.label : UndirectedGraphNode(node.label)}
         q = []; q.append(node)
         newQ = []; newQ.append(newNodes[node.label])

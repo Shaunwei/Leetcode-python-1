@@ -1,7 +1,10 @@
 #!/usr/bin/python
-
-# Sort a linked list using insertion sort.
-
+"""
+Sort a linked list using insertion sort.
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -32,28 +35,10 @@ class Solution:
             if not flag:
                 pivot = pivot.next 
 	return head.next        
-                 
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
 
 if __name__=="__main__":
-    import random
-    arr = random.sample(range(20),20)
-    #arr = [5,2,4,6,1,3]
-    #arr = [2,1]
+    arr = LListUtil.randomArr(20,10)
     sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.insertionSortList(head))     
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(sol.insertionSortList(head))     

@@ -1,9 +1,12 @@
 #!/usr/bin/python
+"""
+Sort List 
 
-# Sort List 
-
-# Sort a linked list in O(n log n) time using constant space complexity.
-
+Sort a linked list in O(n log n) time using constant space complexity.
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -57,30 +60,10 @@ class Solution:
             head2 = head2.next
             curr = curr.next
         return newHead
-    
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
-
-
 
 if __name__=="__main__":
-    import random
-    arr = random.sample(range(20),20)
+    arr = LListUtil.randomArr(20,10)
     sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    
-    sorthead = sol.sortList(head) 
-    #sol.printList(sorthead)     
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(sol.sortList(head))     

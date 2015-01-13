@@ -41,7 +41,7 @@ class Solution:
     # @param node, a undirected graph node
     # @return a undirected graph node
     def cloneGraph(self, node):
-    	if node == None: return None
+    	if not node: return None
         visited = {}
         return self.dfs(node, visited)
 
@@ -62,7 +62,7 @@ if __name__=="__main__":
 """
 Using DFS.
 So call clone means deep copy. For this problem, there are two major tasks:
-(1)  Traverse the graph
+(1)  Traverse the graph.
 (2)  Construct the new graph at the same time. 
-Same as clone a linked list
+Same as clone a linked list.
 """

@@ -16,19 +16,14 @@ class Solution:
     # @param dict, a set of string
     # @return a boolean
     def wordBreak(self, s, dict):
-        n = len(s)
-        A = [False] * n
-        i = n-1
-        while i >= 0:
-            if s[i:n] in dict:
-                A[i] = True
-            else:
-                for j in xrange(i+1, n):
-                    if A[j] and s[i:j] in dict:
-                        A[i] = True
-                        break
-            i -= 1
-        return A[0]
+        segment = [True]
+        for i in range(len(s)):
+            segment.append(False)
+            for j in range(i,-1,-1):
+                if segment[j] and s[j:i+1] in dict:
+                    segment[i+1] = True
+                    break 
+        return segment[len(s)]
 
 if __name__=="__main__":
     string = "leetcode"
@@ -37,6 +32,8 @@ if __name__=="__main__":
     print sol.wordBreak(string,dicts)
 
 """
+The same DP method but in reverse way.
+
 We solve this problem using DP
 Define a boolean array A[0..n-1], where
 A[i] = True, means s[i..n-1] can be segmented into words

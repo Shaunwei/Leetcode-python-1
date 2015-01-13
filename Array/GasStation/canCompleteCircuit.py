@@ -22,13 +22,11 @@ class Solution:
     # @param cost, a list of integers
     # @return an integer
     def canCompleteCircuit(self, gas, cost):
-        num, k = len(gas), -1
-        summ = total = 0
-        for i in xrange(num):
+        summ, total, k = 0, 0, -1
+        for i in xrange(len(gas)):
             summ += gas[i] - cost[i]
             total += gas[i] - cost[i]
-            if summ < 0:
-              summ, k = 0, i
+            if summ < 0: summ, k = 0, i
         return k+1 if total >=0 else -1
 
 if __name__=="__main__":
@@ -37,8 +35,8 @@ if __name__=="__main__":
     print Solution().canCompleteCircuit(gas,cost)
 
 """
-if sum(gas) < sum(cost) then answer is -1, otherwise it should have answer is 
+If sum(gas) < sum(cost) then answer is -1, otherwise it should have answer is 
 start index. 
-Idea of if have start index, sum = gas[i] - cost[i], when sum < 0, ignore it, 
-since total must >=0 then rest of sum should >=0 
+Idea is if have start index, sum = gas[i] - cost[i], when sum < 0, ignore it, 
+since total must >=0 then rest of sum should be >=0 
 """

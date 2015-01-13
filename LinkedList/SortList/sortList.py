@@ -1,9 +1,12 @@
 #!/usr/bin/python
+"""
+Sort List 
 
-# Sort List 
-
-# Sort a linked list in O(n log n) time using constant space complexity.
-
+Sort a linked list in O(n log n) time using constant space complexity.
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -20,7 +23,6 @@ class Solution:
         # base case
         if head is None or head.next is None: 
             return head 
-
         mid = self.makeHalf(head)
         first = self.mergeSort(head)
         mid = self.mergeSort(mid)
@@ -43,8 +45,7 @@ class Solution:
             else:
                 curr.next = listB
                 listB = listB.next
-            curr = curr.next
-       
+            curr = curr.next 
         return temphead.next
 
     def makeHalf(self, head):
@@ -60,30 +61,13 @@ class Solution:
                 if fast is None:
                     break
                 slow = slow.next
-
             mid = slow.next
             slow.next = None
         return mid
 
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
-
 if __name__=="__main__":
-    import random
-    arr = random.sample(range(20),20)
+    arr = LListUtil.randomArr(20,10)
     sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.sortList(head))     
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(sol.sortList(head))     

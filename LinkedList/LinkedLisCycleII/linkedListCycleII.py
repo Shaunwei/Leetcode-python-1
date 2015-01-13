@@ -1,13 +1,16 @@
 #!/usr/bin/python
+"""
+Linked List Cycle II 
 
-# Linked List Cycle II 
+Given a linked list, return the node where the cycle begins. 
+If there is no cycle, return null.
 
-#  Given a linked list, return the node where the cycle begins. 
-#  If there is no cycle, return null.
-
-# Follow up:
-# Can you solve it without using extra space? 
-
+Follow up:
+Can you solve it without using extra space? 
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -35,35 +38,12 @@ class Solution:
             slow = slow.next 
         return fast 
 
-    def printList(self,head):
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    curr = head.next
-    while curr.next:
-        curr = curr.next
-        if not curr.next:
-            curr.next = head.next.next.next.next.next
-            break
-    return head.next
-
 if __name__=="__main__":
     import random
-    #arr = random.sample(range(20),10)
     arr = list(range(10))
     sol = Solution()
-    head = buildList(arr)
-    #sol.printList(head)
-    print sol.detectCycle(head).val    
+    head = LListUtil.buildList(arr)
+    print sol.detectCycle(head)  
 
 """
 Firstly let us assume the slow pointer (S) and fast pointer (F) 

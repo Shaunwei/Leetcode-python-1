@@ -31,6 +31,8 @@ if __name__=="__main__":
     print Solution().singleNumberII(A)
 
 """
+Bit operation, use a array with length 32 to sum all the numbers' binary, so in the end very bit in the
+array mod 3, then the result is the single number.
 Need to consider these cases:
 1. irregular input but valid, such as "-3924x8fc","  +  413";
 2. invalid format: such as " ++c", " ++1"

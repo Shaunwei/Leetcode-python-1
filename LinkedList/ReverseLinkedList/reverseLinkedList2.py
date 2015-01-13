@@ -14,8 +14,6 @@ class ListNode:
 class Solution:
     # @param head, a ListNod
     # @return a ListNode
-    # alternative way, fixed prev and curr val, 
-    # and move curr to the end
     def reverseLinkedList(self, head): 
         if not head: return None
         dumhead = ListNode(0)
@@ -35,3 +33,7 @@ if __name__=="__main__":
     head = LListUtil.buildList(arr)
     LListUtil.printList(head)
     LListUtil.printList(sol.reverseLinkedList(head))
+"""
+Alternative way, fixed prev and curr val, 
+and move curr to the end
+"""
