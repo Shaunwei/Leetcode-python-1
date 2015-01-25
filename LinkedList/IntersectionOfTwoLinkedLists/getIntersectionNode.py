@@ -49,7 +49,7 @@ class Solution:
                 headB = headB.next; blen -= 1
         while headA:
             if headA == headB: return headA
-            headA=headA.next; headB=headB.next 
+            headA, headB = headA.next, headB.next 
         return None       
 
         
@@ -58,7 +58,8 @@ if __name__=="__main__":
     l1 = LListUtil.buildList([2,3])
     l2 = LListUtil.buildList([4,5,6])
     l3 = LListUtil.buildList([8,9,10])
-    l1.next.next=l3; l2.next.next.next=l3 
+    l1.next.next = l3; l2.next.next.next = l3 
+    LListUtil.printList(l1); LListUtil.printList(l2); 
     print (Solution().getIntersectionNode(l1,l2)).val
 
 """

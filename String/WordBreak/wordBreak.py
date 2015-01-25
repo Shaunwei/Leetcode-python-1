@@ -20,8 +20,7 @@ class Solution:
         A = [False] * n
         i = n-1
         while i >= 0:
-            if s[i:n] in dict:
-                A[i] = True
+            if s[i:n] in dict: A[i] = True
             else:
                 for j in xrange(i+1, n):
                     if A[j] and s[i:j] in dict:

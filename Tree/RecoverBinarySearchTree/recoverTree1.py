@@ -14,7 +14,6 @@ Could you devise a constant space solution?
 from sys import path as path1; from os import path as path2
 path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
 import TreeUtil
-
 # Definition for a  binary tree node
 # class TreeNode:
 #     def __init__(self, x):
@@ -36,8 +35,8 @@ class Solution:
         if not node: return
         self.dfs(node.left)
         if self.prev and node.val < self.prev.val:
-            if not self.first: self.first, self.second = self.prev, node
-            else: self.second = node 
+            if not self.first: self.first = self.prev
+            self.second = node 
         self.prev = node
         self.dfs(node.right)
 
@@ -53,14 +52,14 @@ if __name__=="__main__":
 DFS, in-order tree traversal recursively.
 What we need is actually two pointers, which point to 2 tree nodes where is incorrect. 
 Therefore, we only need to store these two pointers, and, we also need another pointer 
-to store the previous element, in order to ompare if the current element is valid or not.
+to store the previous element, in order to compare if the current element is valid or not.
 
 The last step is to replace the wrong pair's value. And the in-order traversal is to search the 
 whole BST and find the wrong pairs.
 
 Note that: 
-(1)the previous element is NOT the root node of the current element, 
-but the previous element in the "in-order" order; 
-(2) To store the wrong pair, the first found wrong element is stored in first pointer, 
-while the next is stored in the second pointer.
+(1)The previous element is NOT the root node of the current element, 
+   but the previous element in the "in-order" order; 
+(2)To store the wrong pair, the first found wrong element is stored in first pointer, 
+   while the next is stored in the second pointer.
 """

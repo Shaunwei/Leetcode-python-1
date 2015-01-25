@@ -6,9 +6,8 @@ A linked list is given such that each node contains an additional random pointer
 which could point to any node in the list or null.
 
 Return a deep copy of the list. 
-
-Definition for singly-linked list with a random pointer.
 """
+# Definition for singly-linked list with a random pointer.
 class RandomListNode:
     def __init__(self, x):
         self.label = x
@@ -20,24 +19,29 @@ class Solution:
     # @return a RandomListNode
     def copyRandomList(self, head):
         if not head: return None
-        curr = head # insert nodes
+        curr = head
+        # copy a[i] value to new b[i], and 
+        # let a[i]->random store in b[i].next,
+        # let b[i] store in a[i]->random
         while curr:
             newNode = RandomListNode(curr.label)
-            newNode.next = curr.next
-            curr.next = newNode
-            curr = newNode.next
-        curr = head # copy random pointer
-        while curr:
-            newNode = curr.next
-            if curr.random: newNode.random = curr.random.next
-            curr = newNode.next
-        curr = head # saparate the two lists
-        newhead = head.next
-        while curr:
-            newNode = curr.next
-            curr.next = newNode.next
-            if newNode.next: newNode.next = newNode.next.next
+            newNode.next = curr.random
+            curr.random = newNode
             curr = curr.next
+        curr = head
+        # let b[i]->random point to b[i]->next->random
+        while curr:
+            newNode = curr.random
+            newNode.random = newNode.next.random if newNode.next else None
+            curr = curr.next
+        newhead = head.random
+        curr = head
+        # restore a[i].random and b[i].next
+        while curr:
+            newNode = curr.random
+            curr.random = newNode.next
+            newNode.next = curr.next.random if curr.next else None 
+            curr = curr.next  
         return newhead
 
 def buildList(arr):
@@ -46,15 +50,10 @@ def buildList(arr):
     for i in arr:
         curr.next = RandomListNode(i)
         curr = curr.next
+
     return head.next
 
 if __name__=="__main__":
     arr = list(range(1,10))
     head = buildList(arr)
     Solution().copyRandomList(head)
-"""
-Three steps:
-1. Insert new Nodes in between the list. eg. N1->N2->N3...to N1->newN1->N2->newN2...
-2. Copy the random pointer. 
-3. Saparate the two lists.
-"""

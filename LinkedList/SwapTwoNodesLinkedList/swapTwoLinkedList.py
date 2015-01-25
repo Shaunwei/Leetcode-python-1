@@ -1,11 +1,15 @@
 #!/usr/bin/python
 
-# Swap a linked list elements m and n. 
+"""
+Swap a linked list elements m and n. 
 
-# For example:
-# Given 1->2->3->4->5->NULL, m=2 and n=4
-# return 1->4->3->2->5->NULL
-
+For example:
+Given 1->2->3->4->5->NULL, m=2 and n=4
+return 1->4->3->2->5->NULL
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -75,11 +79,10 @@ def buildList(arr):
 
 if __name__=="__main__":
     arr = list(range(1,10))
-    sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.swapTwoLinkedList(head,8,9))
-    #sol.printList(sol.swapTwoLinkedList2(head,1,9))
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(Solution().swapTwoLinkedList(head,8,9))
+    LListUtil.printList(Solution().swapTwoLinkedList2(head,1,9))
 
 '''
 swap two nodes in linked list scheme::

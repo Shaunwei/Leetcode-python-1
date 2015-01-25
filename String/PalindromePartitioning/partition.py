@@ -20,13 +20,11 @@ class Solution:
     # @return a list of lists of string
     def partition(self, s):
         self.s, self.result, self.strLen = s, [], len(s)
-        self.isPali = [[False for j in xrange(self.strLen)] for i in xrange(self.strLen)]
+        self.isPali = [[False]*self.strLen for i in xrange(self.strLen)]
         for j in xrange(self.strLen):
             for i in reversed(xrange(j+1)):
                 if s[i]==s[j] and (j-i<=1 or self.isPali[i+1][j-1]==True):
-                # True means substring from s[i](included) 
-                #   to s[j](included) is palindrome
-                     self.isPali[i][j] = True
+                    self.isPali[i][j] = True
         self.dfs(0,[])
         return self.result
  

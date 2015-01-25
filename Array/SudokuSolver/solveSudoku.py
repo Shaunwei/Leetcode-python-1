@@ -65,8 +65,9 @@ if __name__=="__main__":
     for i in board: print i
 
 """
+Using DFS. 
 As the Sudoku has fixed size of board (9x9), the check procedure 
-can be solved using just "for loop"
+can be solved using just "for loop".
 1. Check the rows and columns respectively, a mark array is used 
 to check the numbers.
 2. Check the 3x3 blocks, also using a mark array.

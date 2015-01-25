@@ -18,17 +18,12 @@ class Solution:
         self.solveSudokuRec(board,0,0)
     
     def solveSudokuRec(self, board,row,col):
-        if row == 9:
-            return True
-        if col == 8:
-            nextRow = row +1
-            nextCol = 0
-        else:
-            nextRow = row
-            nextCol = col+1
+        nextRow, nextCol = row, col+1
+        if row == 9: return True
+        if col == 8: nextRow, nextCol = row+1, 0
         if board[row][col]!='.':
             return self.solveSudokuRec(board,nextRow,nextCol)
-        for c in range(1,10):
+        for c in xrange(1,10):
             if self.validate(board,str(c),row,col):
                 board[row][col] = str(c)
                 if self.solveSudokuRec(board,nextRow,nextCol):
@@ -37,17 +32,13 @@ class Solution:
         return False
     
     def validate(self, board, char, row, col):
-        for i in range(0,9):
-            if board[row][i] == char:
-                return False
-            if board[i][col] == char:
-                return False
-        rowGroup = (row/3) * 3
-        colGroup = (col/3) * 3 
-        for i in range(rowGroup, rowGroup+3):
-            for j in range(colGroup, colGroup+3):
-                if board[i][j] == char:
-                    return False
+        for i in xrange(9):
+            if board[row][i] == char: return False
+            if board[i][col] == char: return False
+        rowGroup, colGroup = (row/3)*3, (col/3)*3 
+        for i in xrange(rowGroup, rowGroup+3):
+            for j in xrange(colGroup, colGroup+3):
+                if board[i][j] == char: return False
         return True
         
 
@@ -61,15 +52,15 @@ if __name__=="__main__":
              ['.','6','.','.','.','.','2','8','.'],\
              ['.','.','.','4','1','9','.','.','5'],\
              ['.','.','.','.','8','.','.','7','9']]
-    #for i in board: print i
-    print Solution().solveSudoku(board)
+    Solution().solveSudoku(board)
     for i in board: print i
 
 """
+Using DFS. 
 As the Sudoku has fixed size of board (9x9), the check procedure 
-can be solved using just "for loop"
+can be solved using just "for loop".
 1. Check the rows and columns respectively, a mark array is used 
-to check the numbers.
+   to check the numbers.
 2. Check the 3x3 blocks, also using a mark array.
 """
 

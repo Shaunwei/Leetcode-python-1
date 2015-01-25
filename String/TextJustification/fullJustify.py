@@ -3,13 +3,19 @@
 """
 Text Justification 
 
-Given an array of words and a length L, format the text such that each line has exactly L characters and is fully (left and right) justified.
+Given an array of words and a length L, format the text such that each line 
+has exactly L characters and is fully (left and right) justified.
 
-You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly L characters.
+You should pack your words in a greedy approach; that is, pack as many words 
+as you can in each line. Pad extra spaces ' ' when necessary so that each line 
+has exactly L characters.
 
-Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line do not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+Extra spaces between words should be distributed as evenly as possible. 
+If the number of spaces on a line do not divide evenly between words, 
+the empty slots on the left will be assigned more spaces than the slots on the right.
 
-For the last line of text, it should be left justified and no extra space is inserted between words.
+For the last line of text, it should be left justified and no extra space is 
+inserted between words.
 
 For example,
 words: ["This", "is", "an", "example", "of", "text", "justification."]
@@ -38,7 +44,7 @@ class Solution:
         while i < len(words):
             start, sumwords = i, 0
             while i<len(words) and sumwords+len(words[i])<=L:
-                sumwords += len(words[i]) + 1
+                sumwords += len(words[i]) + 1 # word plus space 
                 i += 1
             end = i - 1    
             intervalCount = end - start   
@@ -56,15 +62,13 @@ class Solution:
                     if leftSp > 0: # the extra space  
                         line += ' '   
                         leftSp -= 1 
-            line += words[end]   
+            line += words[end] ; print len(line)  
             if len(line) < L:   
                 line += ''.join(' ' for i in xrange(L-len(line)))   
             text.append(line)     
         return text   
 
 if __name__=="__main__":
-    words = ["This", "is", "an", "example", "of", "text", "justification."]
-    L = 16
+    words = [''] #["This", "is", "an", "example", "of", "text", "justification."]
+    L = 2 #16
     print Solution().fullJustify(words,L)
-
-

@@ -53,7 +53,7 @@ if __name__=="__main__":
     arr = [1,2,3,4,5,'#',7]
     root = TreeUtil.buildLeetTree(arr)
     TreeUtil.print_tree_graph(root)
-    # Solution().connect(root)
+    Solution().connect(root)
 
 """
 When traversing the current level, build the next level.

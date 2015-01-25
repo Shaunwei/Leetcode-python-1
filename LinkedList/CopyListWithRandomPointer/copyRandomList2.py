@@ -1,12 +1,14 @@
 #!/usr/bin/python
+"""
+Copy List with Random Pointer 
 
-# Copy List with Random Pointer 
+A linked list is given such that each node contains an additional random pointer 
+which could point to any node in the list or null.
 
-# A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
+Return a deep copy of the list. 
 
-# Return a deep copy of the list. 
-
-# Definition for singly-linked list with a random pointer.
+Definition for singly-linked list with a random pointer.
+"""
 class RandomListNode:
     def __init__(self, x):
         self.label = x
@@ -40,13 +42,6 @@ class Solution:
         p1.next, p2.next = None, None   
         return newhead
 
-    def printList(self,head):
-        if not head: print "None"
-        while head:
-            print head.label,
-            head = head.next
-        print
-
 def buildList(arr):
     head = RandomListNode(0)
     curr = head
@@ -58,7 +53,11 @@ def buildList(arr):
 
 if __name__=="__main__":
     arr = list(range(1,10))
-    sol = Solution()
     head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.copyRandomList(head))
+    Solution().copyRandomList(head)
+"""
+Three steps:
+1. Insert new Nodes in between the list. eg. N1->N2->N3...to N1->newN1->N2->newN2...
+2. Copy the random pointer. 
+3. Saparate the two lists.
+"""

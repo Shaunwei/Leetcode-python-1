@@ -3,7 +3,9 @@
 """
 Substring with Concatenation of All Words
 
-You are given a string, S, and a list of words, L, that are all of the same length. Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once and without any intervening characters.
+You are given a string, S, and a list of words, L, that are all of the same length. 
+Find all starting indices of substring(s) in S that is a concatenation of each word 
+in L exactly once and without any intervening characters.
 
 For example, given:
 S: "barfoothefoobarman"
@@ -22,11 +24,10 @@ class Solution:
         result = []
         for i in xrange(slen-wlen*llen+1):
             slist = [S[j:j+wlen] for j in xrange(i,i+wlen*llen,wlen)]
-            found = True;
             for word in L:
                 if word in slist: slist.remove(word)
-                else: found = False; break
-            if found: result.append(i)
+                else: break
+            if not slist: result.append(i)
         return result      
 
 if __name__=="__main__":
@@ -41,6 +42,7 @@ What string is required to match in S?     A length of m*n string start with eac
 What is a match?  In the m*n long string, every string in L appear only once.
 
 So the algorithm is:
-Scan every m*n long string start from each position in S, see if all the strings in L have been appeared only once using Map data structure. If so, store the starting position.
+Scan every m*n long string start from each position in S, see if all the strings in L have been 
+appeared only once using Map data structure. If so, store the starting position.
 """
 

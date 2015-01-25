@@ -44,13 +44,14 @@ class Solution:
             #The two links have different tails. So just return null;
             if tailA and tailB and tailA!=tailB: return None
             if pA == pB: return pA
-            pA = pA.next; pB = pB.next        
+            pA, pB = pA.next, pB.next        
 
 if __name__=="__main__":
     l1 = LListUtil.buildList([2,3])
     l2 = LListUtil.buildList([4,5,6])
     l3 = LListUtil.buildList([8,9,10])
-    l1.next.next=l3; l2.next.next.next=l3 
+    l1.next.next = l3; l2.next.next.next = l3
+    LListUtil.printList(l1); LListUtil.printList(l2);
     print (Solution().getIntersectionNode(l1,l2)).val
 
 """

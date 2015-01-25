@@ -14,51 +14,44 @@
 
 # Very pythonic version solution
 # from __future__ import print_function
-import functools
- 
-def memoize(obj):
-    cache = obj.cache = {}
- 
-    @functools.wraps(obj)
-    def memoizer(*args, **kwargs):
-        if args not in cache:
-            cache[args] = obj(*args, **kwargs)
-        return cache[args]
-    return memoizer
- 
- 
 class Solution:
     # @param s, a string
     # @param dict, a set of string
     # @return a list of strings
     def wordBreak(self, s, dict):
- 
-        # lazy way for the cache decorator
-        @memoize
-        def _wordBreak(s):
-            # print(s)
-            results = []
-            for word in dict:
-                if s == word:
-                    results.append(word)
-                elif s.startswith(word):
-                    # print('got', word)
-                    for result in _wordBreak(s[len(word):]):
-                        results.append(word+' '+result)
- 
-            return results
- 
-        return _wordBreak(s)
- 
- 
+        self.res = []
+        self.dfs(s, dict, '')
+        return self.res
+        
+    def check(self, s, dict):  # work break part 
+        dp = [False for i in range(len(s)+1)]
+        dp[0] = True
+        for i in range(1, len(s)+1):
+            for k in range(0, i):
+                if dp[k] and s[k:i] in dict:
+                    dp[i] = True
+        return dp[len(s)]
+        
+    def dfs(self, s, dict, stringlist):
+        if self.check(s, dict):
+            if len(s) == 0: self.res.append(stringlist[1:])
+            for i in range(1, len(s)+1):
+                if s[:i] in dict:
+                    self.dfs(s[i:],dict,stringlist+' '+s[:i])
+
 if __name__ == '__main__':
     s = "catsanddog"
     dict = ["cat", "cats", "and", "sand", "dog"]
     print(Solution().wordBreak(s, dict))
- 
     s = 'aaaaaaa'
     dict = ["aaaa", "aaa"]
     print(Solution().wordBreak(s, dict))
     s='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab'
     dict=["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
     print(Solution().wordBreak(s, dict))
+
+"""
+This problem is some extension of the word break problem, so the solution is 
+based on the discussion in Word Break. Use Word Break result to get the break point index,
+then use DFS to store the break result.
+"""

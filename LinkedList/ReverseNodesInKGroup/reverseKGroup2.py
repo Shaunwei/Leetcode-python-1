@@ -1,22 +1,25 @@
 #!/usr/bin/python
+"""
+Reverse Nodes in k-Group
 
-# Reverse Nodes in k-Group
+Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
 
-# Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.
 
-# If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.
+You may not alter the values in the nodes, only nodes itself may be changed.
 
-# You may not alter the values in the nodes, only nodes itself may be changed.
+Only constant memory is allowed.
 
-# Only constant memory is allowed.
+For example,
+Given this linked list: 1->2->3->4->5
 
-# For example,
-# Given this linked list: 1->2->3->4->5
+For k = 2, you should return: 2->1->4->3->5
 
-# For k = 2, you should return: 2->1->4->3->5
-
-# For k = 3, you should return: 3->2->1->4->5 
-
+For k = 3, you should return: 3->2->1->4->5 
+"""
+from sys import path as path1; from os import path as path2
+path1.append(path2.dirname(path2.dirname(path2.abspath(__file__))))
+import LListUtil
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -37,38 +40,27 @@ class Solution:
         prehead, preheadnext = dumhead, head
         while curr:
             if listLen-index < listLen%k: break
-            next = curr.next
+            nextN = curr.next
             curr.next = prev
             if index%k == 0:
                 prehead.next = curr
-                preheadnext.next = next
+                preheadnext.next = nextN
                 prehead = preheadnext
                 prev = prehead
-                preheadnext = next
+                preheadnext = nextN
             else:
                 prev = curr
-            curr, index = next, index+1   
+            curr, index = nextN, index+1   
         return dumhead.next
 
-    def printList(self,head):
-        if not head: print "None"
-        while head:
-            print head.val,
-            head = head.next
-        print
-
-def buildList(arr):
-    head = ListNode(0)
-    curr = head
-    for i in arr:
-        curr.next = ListNode(i)
-        curr = curr.next
-
-    return head.next
-
 if __name__=="__main__":
-    arr = list(range(1,10))
-    sol = Solution()
-    head = buildList(arr)
-    sol.printList(head)
-    sol.printList(sol.reverseKGroup(head,3))
+    arr = range(1,10)
+    head = LListUtil.buildList(arr)
+    LListUtil.printList(head)
+    LListUtil.printList(Solution().reverseKGroup(head,4))
+
+"""
+Simliar as problem 'Swap Nodes in Pairs'.
+when index meet times of K (index%K==0), then reverse the list segement.
+Notice, for the last few nodes (list_Length-index < list_Length%k) do nothing.
+"""

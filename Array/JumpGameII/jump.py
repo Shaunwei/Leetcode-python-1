@@ -26,7 +26,7 @@ class Solution:
         while True:
             jumpNum += 1
             for i in xrange(maxi + 1):
-                maxi = max(maxi, i + A[i])
+                maxi = max(maxi, i + A[i]); print jumpNum, maxi
                 if maxi >= lenA - 1: return jumpNum
 
 if __name__=="__main__":
